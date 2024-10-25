@@ -1,4 +1,8 @@
 provider "aws" {
+  region = "eu-west-2"
+}
+
+provider "aws" {
   alias   = "london"
   region  = var.REGION["london"]
 }
