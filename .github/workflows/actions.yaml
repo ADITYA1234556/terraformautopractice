@@ -7,28 +7,32 @@ on:
         - main
 
 jobs:
-  - name: Checkout code
-    uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
 
-  - name: Set up terraform
-    uses: hashicorp/setup-terraform@v2
-    with:
-      terraform_version: 5.54.1 # Specify your Terraform version
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  - name: Terraform Init
-    run: terraform init
-    env:
-      TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Set up terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 5.54.1 # Specify your Terraform version
 
-  - name: Terraform Plan
-    run: terraform plan -out=tfplan
-    env:
-      TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Terraform Init
+        run: terraform init
+        env:
+          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-  - name: Terraform Apply
-    run: terraform apply tfplan
-    env:
-      TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+        env:
+          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Terraform Apply
+        run: terraform apply tfplan
+        env:
+          TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          TF_VAR_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
