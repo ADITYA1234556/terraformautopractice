@@ -8,16 +8,6 @@ provider "aws" {
   region  = var.REGION["paris"]
 }
 
-# terraform {
-#   required_providers {
-#     aws = {
-#       source  = "hashicorp/aws"
-#       version = "5.54.1"
-#     }
-#   }
-#   required_version = "~> 1.3"
-# }
-
 #CREATE A VPC IN LONDON REGION
 resource "aws_vpc" "main" {
   cidr_block = var.CIDR

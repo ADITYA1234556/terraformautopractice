@@ -7,8 +7,9 @@ on:
         - main
 
 env:
-  AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-  AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
 
 jobs:
   build:
@@ -24,7 +25,7 @@ jobs:
           terraform_version: 1.5.0 # Specify your Terraform version
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -backend-config="bucket=$BUCKET_TF_STATE"
 
       - name: Terraform validate
         run: terraform validate
