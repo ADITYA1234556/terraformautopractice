@@ -26,12 +26,12 @@ variable "INT_CIDR" {
   default = "0.0.0.0/0"
 }
 
-variable "AWS_ACCESS_KEY_ID" {
-  description = "The AWS Access Key ID for authentication"
-  type        = string
-}
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  description = "The AWS Secret Access Key for authentication"
-  type        = string
-}
+# variable "AWS_ACCESS_KEY_ID" {
+#   description = "The AWS Access Key ID for authentication"
+#   type        = string
+# }
+#
+# variable "AWS_SECRET_ACCESS_KEY" {
+#   description = "The AWS Secret Access Key for authentication"
+#   type        = string
+# }

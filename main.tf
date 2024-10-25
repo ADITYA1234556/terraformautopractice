@@ -1,14 +1,14 @@
 provider "aws" {
   alias   = "london"
-  access_key = var.AWS_ACCESS_KEY_ID
-  secret_key =  var.AWS_SECRET_ACCESS_KEY
+  access_key = getenv("AWS_ACCESS_KEY_ID")
+  secret_key =  getenv("AWS_SECRET_ACCESS_KEY")
   region  = var.REGION["london"]
 }
 
 provider "aws" {
   alias   = "paris"
-  access_key = var.AWS_ACCESS_KEY_ID
-  secret_key =  var.AWS_SECRET_ACCESS_KEY
+  access_key = getenv("AWS_ACCESS_KEY_ID")
+  secret_key =  getenv("AWS_SECRET_ACCESS_KEY")
   region  = var.REGION["paris"]
 }
 
