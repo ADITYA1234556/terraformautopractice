@@ -1,25 +1,22 @@
 provider "aws" {
   alias   = "london"
-  access_key = getenv("AWS_ACCESS_KEY_ID")
-  secret_key =  getenv("AWS_SECRET_ACCESS_KEY")
   region  = var.REGION["london"]
 }
 
 provider "aws" {
   alias   = "paris"
-  access_key = getenv("AWS_ACCESS_KEY_ID")
-  secret_key =  getenv("AWS_SECRET_ACCESS_KEY")
   region  = var.REGION["paris"]
 }
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "5.54.1"
-    }
-  }
-}
+# terraform {
+#   required_providers {
+#     aws = {
+#       source  = "hashicorp/aws"
+#       version = "5.54.1"
+#     }
+#   }
+#   required_version = "~> 1.3"
+# }
 
 #CREATE A VPC IN LONDON REGION
 resource "aws_vpc" "main" {
