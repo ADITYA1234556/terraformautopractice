@@ -1,12 +1,10 @@
 provider "aws" {
   alias   = "london"
-  profile = "default"
   region  = var.REGION["london"]
 }
 
 provider "aws" {
   alias   = "paris"
-  profile = "default"
   region  = var.REGION["paris"]
 }
 terraform {
